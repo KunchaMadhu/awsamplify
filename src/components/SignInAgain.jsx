@@ -33,7 +33,7 @@ const SignInAgain = () => {
     <div style={styles.body}>
       <h3 style={styles.h3}>Welcome to Skilled Tailor</h3>
       <p style={styles.p}>
-        <a style={styles.a} href="https://kmadhukuncha-auth.auth.us-east-1.amazoncognito.com/logout?client_id=5mpkb6pvjt1csdl9rk4ctg9ded&logout_uri=https://skilledtailor.site/signin">
+        <a style={styles.a} href="https://kmadhukuncha-auth.auth.us-east-1.amazoncognito.com/logout?client_id=5mpkb6pvjt1csdl9rk4ctg9ded&logout_uri=https://main.d9sfkh9b551oc.amplifyapp.com/signin">
           Please Sign In Again
         </a>
       </p>
