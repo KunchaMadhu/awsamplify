@@ -79,7 +79,7 @@ function SignIn() {
             </form>
             <p className="mt-4">
                 <Link to="https://kmadhukuncha-auth.auth.us-east-1.amazoncognito.com/signup?client_id=5mpkb6pvjt1csdl9rk4ctg9ded&response_type=code&scope=email+openid&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsigninagain" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Sign Up  instead updated
+                    Sign Up  instead updated two
                 </Link>
             </p>
         </div>
