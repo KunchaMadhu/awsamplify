@@ -31,7 +31,7 @@ function App()
                             <Route path="/signout" element={<SignOut />} />
                             <Route path="/signin" element={<SignIn />} />
                             <Route path="/LoggedInPage" element={<LoggedInPage />} />
-                            <Route path="/SignInAgain" element={<SignInAgain />} />
+                            <Route path="/signinagain" element={<SignInAgain />} />
                             <Route path="/EditPage" element={<EditPage />} />
                             <Route path="/ProfilePage" element={<ProfilePage />} />
                             <Route path="/MDpage" element={<MDpage />} />
