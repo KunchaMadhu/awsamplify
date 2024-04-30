@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 const TailorSelectionTable = () => {
+    const { email } = useAuth();
     const [tailors, setTailors] = useState([]);
     const [selectedTailor, setSelectedTailor] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [orderPlaced, setOrderPlaced] = useState(false);
+    const [shirtDetails, setShirtDetails] = useState([]);
+    const [trousersDetails, setTrousersDetails] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTailors = async () => {
             try {
-                const response = await fetch('https://qksidf21w6.execute-api.us-east-1.amazonaws.com/UserTF/');               
+                const response = await fetch('https://qksidf21w6.execute-api.us-east-1.amazonaws.com/UserTF/');
                 const data = await response.json();
                 if (data.statusCode === 200) {
-                    // Collect all "body#" objects into an array
-                    const tailorData = [];
-                    Object.keys(data).forEach(key => {
-                        if (key.startsWith('body')) {
-                            tailorData.push(data[key]);
-                        }
-                    });
+                    const tailorData = Object.keys(data).filter(key => key.startsWith('body')).map(key => data[key]);
                     setTailors(tailorData);
                 } else {
                     setError('Failed to fetch data from the server.');
@@ -31,11 +32,56 @@ const TailorSelectionTable = () => {
             }
         };
 
+        const savedShirts = JSON.parse(localStorage.getItem('shirtDetails')) || [];
+        const savedTrousers = JSON.parse(localStorage.getItem('trousersDetails')) || [];
+        setShirtDetails(savedShirts);
+        setTrousersDetails(savedTrousers);
         fetchTailors();
     }, []);
 
-    const handleSelectTailor = (tailor) => {
-        setSelectedTailor(tailor);
+    const placeOrder = async () => {
+   
+    
+   
+        
+        
+        const response = fetch('https://mhzgj4besa.execute-api.us-east-1.amazonaws.com/OrderPlace', { 
+
+                
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                // body: '{\n  "data": {\n    "MailID": "kmadhukuncha@gmail.com",\n    "ShopName": "Varun Tailors"\n  },\n  "dress": {\n    "D1": {\n      "DressType": "Shirt1",\n      "Material": "white raymond",\n      "TypeOfFit": "exact fit",\n      "Quantity": 1\n    },\n    "D2": {\n      "DressType": "Shirt2",\n      "Material": "white raymond",\n      "TypeOfFit": "normal flexibility",\n      "Quantity": 1\n    },\n    "D3": {\n      "DressType": "Shirt3",\n      "Material": "white raymond",\n      "TypeOfFit": "extra flexibility",\n      "Quantity": 1\n    }\n  }\n}',
+                body: JSON.stringify({
+                  'data': {
+                    'MailID': email,
+                    'ShopName': selectedTailor.ShopName
+                  },
+                 
+                  'dress': {
+                    'D1': {
+                        'DressType': "Shirt1",
+                        'Material': "white raymond",
+                        'TypeOfFit': "exact fit",
+                        'Quantity': 1
+                      }
+                  }
+                })
+              });
+              if (response.statusCode === 200) {
+                setOrderPlaced('your order is placed successfully')
+            } else {
+                setOrderPlaced('An error happened, please try again after some time.');
+            }
+           
+           
+            
+       
+    };
+
+    const navigateToOrders = () => {
+        navigate('/OrdersView');
     };
 
     if (loading) {
@@ -85,7 +131,7 @@ const TailorSelectionTable = () => {
                                         type="radio"
                                         name="tailorSelection"
                                         checked={selectedTailor === tailor}
-                                        onChange={() => handleSelectTailor(tailor)}
+                                        onChange={() => setSelectedTailor(tailor)}
                                         style={{ cursor: 'pointer' }}
                                     />
                                 </td>
@@ -98,9 +144,24 @@ const TailorSelectionTable = () => {
                         ))}
                     </tbody>
                 </table>
+                {selectedTailor && !orderPlaced && (
+                    <button onClick={placeOrder} style={{ padding: '10px 20px', margin: '5px', backgroundColor: '#4caf50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                        Place Order
+                    </button>
+                )}
+                {orderPlaced && (
+                    <div>
+                        <p>Your order has been successfully placed.</p>
+                        <button onClick={navigateToOrders} style={{ padding: '10px 20px', margin: '5px', backgroundColor: '#0056b3', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                            View Your Orders
+                        </button>
+                    </div>
+                )}
+                {error && <p style={{ color: 'red' }}>{error}</p>}
             </div>
         </div>
     );
+    
 };
 
 export default TailorSelectionTable;

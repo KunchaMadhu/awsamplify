@@ -2,26 +2,26 @@ import React, { useState } from 'react';
 
 import { useAuth } from './AuthContext';
 
-import S1Image from './assets/images/Screenshot (2470).png';
-import S2Image from './assets/images/Screenshot (2471).png';
-import S3Image from './assets/images/Screenshot (2472).png';
-import S4Image from './assets/images/Screenshot (2473).png';
-import S5Image from './assets/images/Screenshot (2474).png';
-import S6Image from './assets/images/Screenshot (2475).png';
-import S7Image from './assets/images/Screenshot (2476).png';
-import S8Image from './assets/images/Screenshot (2477).png';
-import S9Image from './assets/images/Screenshot (2478).png';
-import S10Image from './assets/images/Screenshot (2479).png';
-import P1Image from './assets/images/Screenshot (2470).png';
-import P2Image from './assets/images/Screenshot (2471).png';
-import P3Image from './assets/images/Screenshot (2472).png';
-import P4Image from './assets/images/Screenshot (2473).png';
-import P5Image from './assets/images/Screenshot (2474).png';
-import P6Image from './assets/images/Screenshot (2475).png';
-import P7Image from './assets/images/Screenshot (2476).png';
-import P8Image from './assets/images/Screenshot (2477).png';
-import P9Image from './assets/images/Screenshot (2478).png';
-import P10Image from './assets/images/Screenshot (2479).png';
+import S1Image from './assets/images/S1.jpg';
+import S2Image from './assets/images/S2.jpg';
+import S3Image from './assets/images/S3.jpg';
+import S4Image from './assets/images/S4.jpg';
+import S5Image from './assets/images/S5.jpg';
+import S6Image from './assets/images/S6.jpg';
+import S7Image from './assets/images/S7.jpg';
+import S8Image from './assets/images/S8.jpg';
+import S9Image from './assets/images/S9.jpg';
+import S10Image from './assets/images/S10.jpg';
+import P1Image from './assets/images/P1.jpg';
+import P2Image from './assets/images/P2.jpg';
+import P3Image from './assets/images/P3.jpg';
+import P4Image from './assets/images/P4.jpg';
+import P5Image from './assets/images/P5.jpg';
+import P6Image from './assets/images/P6.jpg';
+import P7Image from './assets/images/P7.jpg';
+import P8Image from './assets/images/P8.jpg';
+import P9Image from './assets/images/P6.jpg';
+import P10Image from './assets/images/P6.jpg';
 
 const TailoringBusinessForm = () => {
     const { email } = useAuth();

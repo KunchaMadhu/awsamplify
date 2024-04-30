@@ -15,6 +15,7 @@ import MDpage from "./components/MDpage";
 import EDpage from "./components/EDpage";
 import Order1 from "./components/Order1";
 import Order2 from "./components/Order2";
+import OrdersView from "./components/OrdersView";
 function App()
 {
        return (
@@ -38,6 +39,7 @@ function App()
                             <Route path="/EDpage" element={<EDpage />} />
                             <Route path="/Order1" element={<Order1 />} />
                             <Route path="/Order2" element={<Order2 />} />
+                            <Route path="/OrdersView" element={<OrdersView />} />
                         </Routes>
                     </div>
                 </div>
